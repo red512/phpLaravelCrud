@@ -38,7 +38,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return view('posts.store');
+
     }
 
     /**
@@ -49,7 +50,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+       // return view('posts.show');
     }
 
     /**
@@ -60,7 +61,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+       // return view('posts.edit');
+
     }
 
     /**
@@ -72,7 +74,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        //return view('posts.update');
     }
 
     /**
@@ -83,6 +85,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        //return view('posts.destroy');
+
     }
 }

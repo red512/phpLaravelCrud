@@ -10,7 +10,7 @@
 
 @section('content')
     <a href="{{route('posts.create')}}" class="btn btn-success">Add product</a>
-    <table class="table table-stripedb mt-3">
+    <table class="table table-striped mt-3">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -22,27 +22,26 @@
         </thead>
         <tbody>
         @foreach($posts as $post)
-        <tr>
-            <th scope="row">{{$post->id}}</th>
-            <td>{{$post->title}}</td>
-            <td>{{$post->description}}</td>
-            <td>{{$post->price}}</td>
-            <td class="table-buttons">
-                <a href="#" class="btn btn-success">
-                    <i class="fa fa-eye"></i>
-                </a>
+            <tr>
+                <th scope="row">{{ $post->id }}</th>
+                <td>{{ $post->title }}</td>
+                <td>{{ $post->description }}</td>
+                <td>{{ $post->price }}$</td>
+                <td class="table-buttons">
+                    <a href="{{ route('posts.show', $post) }}" class="btn btn-success">
+                        <i class="fa fa-eye"></i>
+                    </a>
+                    <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">
+                        <i class="fa fa-pencil" ></i>
+                    </a>
+                    <form method="POST" action="">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </form>
 
-                <a href="#" class="btn btn-primary">
-                    <i class="fa fa-edit"></i>
-                </a>
-                <form method="POST" action="">
-                <button type="submit" class="btn btn-danger">
-                    <i class="fa fa-trash"></i>
-                </button>
-                </form>
-
-            </td>
-        </tr>
+                </td>
+            </tr>
         @endforeach
         </tbody>
     </table>
