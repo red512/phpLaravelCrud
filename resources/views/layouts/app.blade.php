@@ -52,6 +52,13 @@
         @yield('content')
     </div>
     <script src="{{asset('js/app.js')}}"></script>
+    <script>
+
+        $(document).ready(function(){
+            $('.alert-success').fadeOut(3000);
+        });
+
+    </script>
 
 </body>
 </html>

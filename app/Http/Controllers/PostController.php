@@ -60,9 +60,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-       // return view('posts.show');
+        $post = Post::find($id);
+        //dd($post);
+        return view('posts.show', compact('post'));
+
     }
 
     /**
@@ -71,9 +74,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-       // return view('posts.edit');
+        $post = Post::find($id);
+        return view('posts.edit',compact('post'));
 
     }
 
@@ -84,9 +88,21 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //return view('posts.update');
+        $request->validate([
+            'title'=>'required|max:255',
+            'description'=>'required|max:255',
+            'price'=>'required|max:10'
+        ]);
+        $post = Post::find($id);
+        $post->title = $request->get('title');
+        $post->description = $request->get('description');
+        $post->price = $request->get('price');
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Product edited successfully');
+
     }
 
     /**
